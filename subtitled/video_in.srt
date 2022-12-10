@@ -1,0 +1,452 @@
+1
+0:00:00.000 --> 0:00:07.000
+So in the past videos I already showed how much customization and freedom you had with the AI system in RPG Builder.
+
+2
+0:00:07.000 --> 0:00:17.000
+But what if I told you that there is even more and this part is actually having a huge impact in the way the states and behavior and phases are executed in game.
+
+3
+0:00:17.000 --> 0:00:24.000
+So as a quick recap, NPCs in RPG Builder can have as many phases as you want.
+
+4
+0:00:24.000 --> 0:00:26.000
+Each phase can have its own phase template.
+
+5
+0:00:26.000 --> 0:00:33.000
+When an NPC is entering one of its phases, it has a list of potential available behaviors.
+
+6
+0:00:33.000 --> 0:00:35.000
+It could be 1, it could be 5, whatever.
+
+7
+0:00:35.000 --> 0:00:37.000
+It's going to pick only one of those, right?
+
+8
+0:00:37.000 --> 0:00:42.000
+So each of your NPCs can be very different when they spawn and when they enter a phase.
+
+9
+0:00:42.000 --> 0:00:46.000
+Now, if we look at the behavior here, it is a collection of states.
+
+10
+0:00:46.000 --> 0:00:48.000
+I covered behaviors in their own videos.
+
+11
+0:00:48.000 --> 0:00:52.000
+But as you can see, each state also has a state template.
+
+12
+0:00:52.000 --> 0:00:55.000
+And this is what I did not cover just yet.
+
+13
+0:00:55.000 --> 0:01:01.000
+So to explain how you should see that, let's take the roaming state as an example.
+
+14
+0:01:01.000 --> 0:01:06.000
+Here, if I click on this and select it, you can see that it's just not much.
+
+15
+0:01:06.000 --> 0:01:09.000
+It's actually just logic.
+
+16
+0:01:09.000 --> 0:01:13.000
+So the roaming state is the logic of roaming.
+
+17
+0:01:13.000 --> 0:01:23.000
+In there, there is some code that basically finds some points, tells the NPC to move from one point to another, wait a certain duration, etc.
+
+18
+0:01:23.000 --> 0:01:27.000
+But all those things, the duration, all these things, this is the data.
+
+19
+0:01:27.000 --> 0:01:30.000
+The data is not stored inside this logic, right?
+
+20
+0:01:30.000 --> 0:01:33.000
+The data is stored as a template.
+
+21
+0:01:33.000 --> 0:01:41.000
+As you can see here, if I now select the bare roaming template, this is where we define how the roaming state should behave.
+
+22
+0:01:41.000 --> 0:01:43.000
+Not the other way around.
+
+23
+0:01:43.000 --> 0:01:50.000
+And what this allows is we can use the exact same roaming state, this one, on let's say 100 NPCs.
+
+24
+0:01:50.000 --> 0:01:56.000
+But if they each have a custom roaming template assigned, you can always spawn them in the world.
+
+25
+0:01:56.000 --> 0:02:01.000
+And even if they use the exact same roaming state, they will roam in very, very different ways.
+
+26
+0:02:01.000 --> 0:02:03.000
+That's what we're going to see in this video.
+
+27
+0:02:03.000 --> 0:02:11.000
+So let's take a look at what kind of values and settings we have available to us in some of those state templates.
+
+28
+0:02:11.000 --> 0:02:17.000
+As you can see, some have more options than others because some just don't need that many options.
+
+29
+0:02:17.000 --> 0:02:20.000
+But the roaming one is a good example.
+
+30
+0:02:20.000 --> 0:02:23.000
+So here we have the roaming state values.
+
+31
+0:02:23.000 --> 0:02:29.000
+And the first thing, or rather the first two things are concerning targeting.
+
+32
+0:02:29.000 --> 0:02:33.000
+So here we have the view angle. It's pretty much the field of view of this unit.
+
+33
+0:02:33.000 --> 0:02:44.000
+So if a valid unit, let's say an enemy of the bear, is within 75 degrees as a cone right in front of him, it is going to be a valid target.
+
+34
+0:02:44.000 --> 0:02:47.000
+But it also needs to be within the view distance.
+
+35
+0:02:47.000 --> 0:02:55.000
+So if it is within 75 degrees and within 15 meters, it is going to be aggroed by the bear.
+
+36
+0:02:55.000 --> 0:02:59.000
+Lastly, we can also have an auto-aggro distance.
+
+37
+0:02:59.000 --> 0:03:07.000
+And this distance means that if a valid target is within five meters, it is not going to check the view angle.
+
+38
+0:03:07.000 --> 0:03:11.000
+It is not going to care if it is in front of us or not. It is going to aggro.
+
+39
+0:03:11.000 --> 0:03:17.000
+You can have this at zero and this will never happen so that you can really ambush your NPC.
+
+40
+0:03:17.000 --> 0:03:23.000
+But if you want them to hear you within a certain distance, you can have a value in zero.
+
+41
+0:03:23.000 --> 0:03:29.000
+Now, each state template has the movement speed modifier attribute here.
+
+42
+0:03:29.000 --> 0:03:34.000
+So this is a very cool one because let's take a look at the bear here.
+
+43
+0:03:34.000 --> 0:03:38.000
+For example, let's say that the bear was moving at a movement speed of 10.
+
+44
+0:03:38.000 --> 0:03:45.000
+You could have full control over how quick it is moving when it is roaming, how quick it is moving when it is chasing,
+
+45
+0:03:45.000 --> 0:03:51.000
+how quick it is moving when it is in combat, maybe strafing, how quick it is moving when it is fleeing, and so on.
+
+46
+0:03:51.000 --> 0:03:54.000
+You get the idea. So that's really cool. It is a percentage.
+
+47
+0:03:54.000 --> 0:03:57.000
+So it's not like a fixed speed, which is very, very handy.
+
+48
+0:03:57.000 --> 0:04:00.000
+It's going to adapt based on the movement speed of your NPC.
+
+49
+0:04:00.000 --> 0:04:06.000
+And in this case, if we have a value of one here, it means it's going to be at full speed.
+
+50
+0:04:06.000 --> 0:04:10.000
+If we have 0.5, half, and so on, you can, of course, also go above one.
+
+51
+0:04:10.000 --> 0:04:15.000
+You could have, for example, chasing be at two. So this unit will chase really quick.
+
+52
+0:04:15.000 --> 0:04:18.000
+And remember, we can still use the exact same chase state.
+
+53
+0:04:18.000 --> 0:04:23.000
+We can just have a different chase template with a faster movement speed.
+
+54
+0:04:23.000 --> 0:04:30.000
+Now, here we have a pause duration. So if we look at this scene here, this circle is an NPC spawner.
+
+55
+0:04:30.000 --> 0:04:37.000
+If the NPC is spawning here and is going to roam to this point, and then it wants to go here, and then it wants to go here.
+
+56
+0:04:37.000 --> 0:04:43.000
+If you have 0 as pause duration, it's going to go here, here, here, without stopping. It will just keep roaming.
+
+57
+0:04:43.000 --> 0:04:48.000
+If you have here 5 seconds, it's going to stop at each point 5 seconds. That's all.
+
+58
+0:04:48.000 --> 0:04:55.000
+The roam distance has one more option. So here you can see that we have roam around spawner.
+
+59
+0:04:55.000 --> 0:05:00.000
+If you have this on, it means that if we have 50 here in the roam distance,
+
+60
+0:05:00.000 --> 0:05:08.000
+the NPC is only going to be able to roam within 50 meters of the spawner origin.
+
+61
+0:05:08.000 --> 0:05:14.000
+If you have this off, it's actually instead going to use its position, so the spawn position.
+
+62
+0:05:14.000 --> 0:05:21.000
+So if the NPC spawns here, it can roam 50 meters around its spawn position.
+
+63
+0:05:21.000 --> 0:05:26.000
+It's no longer going to be stuck around its spawner.
+
+64
+0:05:26.000 --> 0:05:33.000
+The roam point threshold is also like how far away from a roaming point can it stop.
+
+65
+0:05:33.000 --> 0:05:43.000
+It's usually good to keep this value around maybe 0.5 or 1. 3 might be a bit too high to be honest, but maybe around something like 1.
+
+66
+0:05:43.000 --> 0:05:51.000
+Now a very important one as well is the roam ground layer. If you have this under nothing, it is not actually going to be roaming.
+
+67
+0:05:51.000 --> 0:06:00.000
+Because the way it works is that when an NPC is trying to find its next available in a roaming point,
+
+68
+0:06:00.000 --> 0:06:09.000
+it's actually going to recast the ground from the top. I say the ground actually, but any object that's under this layer.
+
+69
+0:06:09.000 --> 0:06:13.000
+So it's going to recast, it's going to look to hit an object with this layer.
+
+70
+0:06:13.000 --> 0:06:18.000
+So in this case, ground. And here we have the terrain, which is a ground, so it's obviously going to hit the terrain.
+
+71
+0:06:18.000 --> 0:06:26.000
+But the reason it does that is because we don't want to tell or bear or something to roam on top of this rock,
+
+72
+0:06:26.000 --> 0:06:30.000
+because it's not even going to be able to reach it. The navmesh doesn't even go there.
+
+73
+0:06:30.000 --> 0:06:36.000
+And if it does hit this rock, it's not going to be valid and it's going to look for a new point.
+
+74
+0:06:36.000 --> 0:06:42.000
+That's very useful. And also in a recent update, added some pathfinding checks.
+
+75
+0:06:42.000 --> 0:06:48.000
+So not only is going to check for the layer, but it's also going to make sure it can actually reach it.
+
+76
+0:06:48.000 --> 0:06:54.000
+If for whatever reason, let's say that this was blocked by a rock and this could never be reached.
+
+77
+0:06:54.000 --> 0:07:02.000
+If the NPC was finding this as a roaming point, RPGBudder will check if this bear can actually go there.
+
+78
+0:07:02.000 --> 0:07:07.000
+And if it cannot, it will then just find a new roaming point.
+
+79
+0:07:07.000 --> 0:07:10.000
+And that's pretty much it for the roaming template.
+
+80
+0:07:10.000 --> 0:07:16.000
+Here, as you can see, we have another one with quite a few settings. It is the flee one.
+
+81
+0:07:16.000 --> 0:07:26.000
+So NPCs can flee in RPGBudder and you can have, like I explained in the behavior video, all kinds of conditions that make them flee, etc.
+
+82
+0:07:26.000 --> 0:07:31.000
+But here we're more interested in what kind of settings do we have access to with those templates.
+
+83
+0:07:31.000 --> 0:07:34.000
+So first of all, the flee distance max, of course.
+
+84
+0:07:34.000 --> 0:07:42.000
+So how far away can it flee from its origin position, so when it started fleeing? In this case, 40 meters, right?
+
+85
+0:07:42.000 --> 0:07:48.000
+Then we have a flee duration. So for how long will this NPC be fleeing for?
+
+86
+0:07:48.000 --> 0:07:56.000
+This can be as high as you want, but in this case, after 10 seconds, it's going to actually give up and just go back to the fight, right?
+
+87
+0:07:56.000 --> 0:08:00.000
+Because it didn't really, maybe didn't find help or something.
+
+88
+0:08:00.000 --> 0:08:06.000
+And talking about help, as you can see here, we have a call for help option.
+
+89
+0:08:06.000 --> 0:08:13.000
+If we have this off, it's just going to flee and come back to you after the duration, if it's not dead yet.
+
+90
+0:08:13.000 --> 0:08:21.000
+If you have this on, it is actually, as it is fleeing, it is going to try to attract some of its allies, right?
+
+91
+0:08:21.000 --> 0:08:25.000
+Or like valid targets that I'm going to cover in here.
+
+92
+0:08:25.000 --> 0:08:37.000
+It's going to call for help. And if they are not already busy and not in combat, they're going to actually get the target of this boar, for example, that was fleeing and set it as their own target.
+
+93
+0:08:37.000 --> 0:08:46.000
+So if you were fighting a boar and the boar is fleeing and is actually finding some of his allies that can help, they will have you as a target and come fight you.
+
+94
+0:08:46.000 --> 0:08:58.000
+Now, for another NPC to actually be triggered and aggro you, because it was called for help, it needs to be within the distance that you set here.
+
+95
+0:08:58.000 --> 0:09:03.000
+So 15 meters or whatever you want. But it also needs to be in this list.
+
+96
+0:09:03.000 --> 0:09:08.000
+So here, for example, you could have as many as you want. It could be, of course, only one, could be five, whatever you want.
+
+97
+0:09:08.000 --> 0:09:20.000
+You can assign the NPCs of your choice. But for example, you can have, like I said, specific NPCs assigned here, or we can have NPC families.
+
+98
+0:09:20.000 --> 0:09:27.000
+So these are things you create here. And for example, you could create something called wolves.
+
+99
+0:09:27.000 --> 0:09:35.000
+And here, or maybe I'm not going to bother. I don't have a wolf icon here, but I'm just going to call this.
+
+100
+0:09:35.000 --> 0:09:42.000
+I mean, it doesn't really matter now, but you get the idea. You could basically create an NPC family called boars.
+
+101
+0:09:42.000 --> 0:09:49.000
+And you could have maybe 15 different boar NPCs in your NPC list here. And they could all have the boar family.
+
+102
+0:09:49.000 --> 0:09:55.000
+So yeah, that's the way it works. And in this case, this boar that was fleeing could call for his family.
+
+103
+0:09:55.000 --> 0:10:02.000
+Instead of you having to manually add 15 boar NPCs here, you can just add the boar family and that's it.
+
+104
+0:10:02.000 --> 0:10:05.000
+And as you can see, as always, we have the movement speed modifier.
+
+105
+0:10:05.000 --> 0:10:11.000
+So the same goes for all those states and their templates. They all have settings like this.
+
+106
+0:10:11.000 --> 0:10:19.000
+But the roaming and the fleeing ones are the ones with the most value. We also have patrol and the pet following.
+
+107
+0:10:19.000 --> 0:10:27.000
+So the pet following is quite fun. Also, we have a few values such as how far away should the pet stay from its owner.
+
+108
+0:10:27.000 --> 0:10:36.000
+So in this case, 2 meters. And here you can actually decide if you want the pet to follow you or rather to follow you,
+
+109
+0:10:36.000 --> 0:10:41.000
+but stay on your left, on your right, back and front. And this is not only for your pet.
+
+110
+0:10:41.000 --> 0:10:45.000
+This is also for your NPCs pet. They can have their own pet.
+
+111
+0:10:45.000 --> 0:10:50.000
+And here we have the patrol one, but I'm actually going to keep this one for the patrolling video.
+
+112
+0:10:50.000 --> 0:10:55.000
+So that's pretty much all I wanted to show concerning state templates.
+
+113
+0:10:55.000 --> 0:11:03.000
+I hope you like how it works. If you have any questions, as always, let me know on Discord and see you in the next video.
+
